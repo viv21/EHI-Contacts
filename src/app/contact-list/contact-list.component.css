@@ -1,0 +1,58 @@
+div{
+    font-family:Tahoma, Verdana, Segoe, sans-serif;
+}
+
+/* .contact{
+    margin:10px;
+} */
+
+.header{
+    font-weight: bolder;
+    margin-bottom:10px;
+}
+.contact .edit{
+    margin-right:15px;
+}
+.contact .readOnly{
+    height:36px;
+    padding:8px 0px;
+    background-color: #faf9fb;
+}
+
+.contact .readOnly:hover{
+    background-color: #d5d6e7;
+}
+.pageHeader{
+    width:200px;
+    margin: 30px auto;
+    font-size: 20px;
+}
+.listContainer{
+    /* width:90%; */
+    margin:0 auto;
+}
+
+.editable.row{
+    margin-bottom: 10px;
+    margin-top:4px;
+}
+
+.statusInput{
+    margin-top: -6px;
+}
+
+.greyed{
+    color:#b6b0b0;
+}
+
+.contact{
+    margin-bottom: 3px;
+}
+
+.ng-touched.ng-valid{
+    border-color:green;
+}
+
+.ng-touched.ng-invalid{
+    border-color:red;
+}

@@ -1,0 +1,34 @@
+
+<!-- <div class="col-md-3"> -->
+    <div class="pageHeader">Add Contact</div>
+    <form #contactForm="ngForm" (ngSubmit)="addContact(contactForm)">
+        <div class="form-group">
+            <label >First Name</label>
+            <input ngModel name="firstName" class="form-control" required/>
+            
+        </div>
+        <div class="form-group">
+            <label class="" required>Last Name</label>
+        <input ngModel name="lastName" class="form-control" required/>
+            
+        </div>
+        <div class="form-group">
+            <label class="">Email Id </label>
+            <input email ngModel name="email" required class="form-control" type="email" />
+            
+        </div>
+        <div class="form-group">
+            <label class=""> Phone No.</label>
+            <input ngModel   maxlength="10" name="phoneNumber" required class="form-control" (keydown)="onkeydown($event)"/>
+        </div>
+        <div class="statusDiv">
+            <div><span class="status">Status</span>
+                <label><input value="Active" name="status" ngModel type="radio" name="status" required/></label> Active 
+                <label><input value="Inactive" name="status" ngModel type="radio" name="status" required/></label>Inactive
+            </div>
+            
+        </div>
+        <button type="submit" [disabled]="!contactForm.form.valid" class="btn btn-primary" > Add Contact</button>
+    </form>
+    <!-- </div> -->
+ 

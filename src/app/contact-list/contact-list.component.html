@@ -1,0 +1,44 @@
+<div class="pageHeader">
+    Your Contacts
+</div>
+<div class="listContainer">
+    <div class="header " >
+        <div class="row">
+            <span class="col-md-2 col-sm-2"> First Name </span> 
+            <span class="col-md-2 col-sm-2"> Last Name </span>
+            <span class="col-md-3 col-sm-3"> Email Id </span>
+            <span class="col-md-2 col-sm-2"> Phone No. </span>
+            <span class="col-md-1 col-sm-1"> Status </span>
+        </div>
+    </div>
+    <div class="contact " *ngFor="let contact of contacts">
+        <div [class]="contact.status=='Inactive'?'greyed readOnly row':'readOnly row'" *ngIf="!isEditOn || (isEditOn && selectedRow.email!=contact.email)">
+            <span class="col-md-2 col-sm-2"> {{contact.firstName}} </span> 
+            <span class="col-md-2 col-sm-2"> {{contact.lastName}} </span>
+            <span class="col-md-3 col-sm-2"> {{contact.email}} </span>
+            <span class="col-md-2 col-sm-2"> {{contact.phoneNumber}} </span>
+            <span class="col-md-1 col-sm-1"> {{contact.status}} </span>
+            <span class="col-md-1 col-sm-1"><button class="btn btn-primary btn-xs edit" (click)="toggleEdit(contact)">Edit</button></span>
+            <span class="col-md-1 col-sm-1"><button class="btn btn-danger btn-xs delete" (click)="deleteContact(contact)">Delete</button></span>
+        </div> 
+        <div class="editable row" *ngIf="isEditOn && selectedRow.email==contact.email">
+            <form #updateForm="ngForm">
+            <div class="col-md-2 col-sm-2"><input class="form-control" required [(ngModel)]="editedContact.firstName" name="firstName"/></div>
+            <div class="col-md-2 col-sm-2"><input class="form-control" required [(ngModel)]="editedContact.lastName" name="lastName"/></div>
+            <div class="col-md-3 col-sm-3"><input class="form-control" required [(ngModel)]="editedContact.email" name="email" type="email" email/></div>
+            <div class="col-md-2 col-sm-2"><input maxlength="10" minlength="10" class="form-control" required [(ngModel)]="editedContact.phoneNumber" name="phoneNumber" (keydown)="onkeydown($event)"/></div>
+            <div class="col-md-1 col-sm-1 statusInput">
+                <div><input class="" type="radio"  required [(ngModel)]="editedContact.status" value="Active" name="status"/>Active</div>
+                <div><input class="" type="radio"  required [(ngModel)]="editedContact.status" value="Inactive" name="status"/>Inactive</div>
+            </div>
+            <div class="col-md-1 col-sm-1"><button type="submit" [disabled]="!updateForm.form.valid" class="btn btn-primary btn-xs update" (click)="updateContact(editedContact)">Update</button></div>
+            <div class="col-md-1 col-sm-1" ><button class="btn btn-secondary btn-xs update" (click)="cancelEdit()">Cancel</button></div>
+            </form>
+        </div>   
+    </div>
+    
+    <div *ngIf="!contacts || contacts.length==0">
+        No Contacts.
+        Added Contacts appear here
+    </div>
+</div>
