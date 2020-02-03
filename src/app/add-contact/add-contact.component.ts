@@ -17,9 +17,16 @@ export class AddContactComponent implements OnInit {
   }
 
   addContact(form){
-    this.contactService.addContact(form.value);
-    form.resetForm();
-    this.toastrService.success('Added',"Contact Added");
+    let idx = this.contactService.contacts.findIndex(ele=>ele.email==form.value.email)
+    if(idx>-1){
+      this.toastrService.error('Already Exists',"Email already exists");
+    }
+    else{
+      this.contactService.addContact(form.value);
+      form.resetForm();
+      this.toastrService.success('Added',"Contact Added");
+    }
+    
   }
   onkeydown(event){
     if(!(/[0-9]/.test(event.key) || event.key=="ArrowLeft" ||event.key=="ArrowRight" || event.key=="Backspace" || event.key=="Delete")){
