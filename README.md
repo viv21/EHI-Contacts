@@ -12,3 +12,15 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 # EHI-Contacts
 Demo project for EHI
+
+
+##  Running Locally
+Clone the repository and run `npm install` to install dependencies.
+Once finished serve the application using ng-serve
+For building the application for production run `ng build --prod`
+
+##Validations
+All fields are mandatory.
+Phone number should be 10 digits and only numerics allowed.
+Email should have @ symbol.
+Email should be unique as it is used for uniquely identifying a contact.
